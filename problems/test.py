@@ -9,39 +9,90 @@ class test(Problem):
 
     def __init__(self, function: FunctionValue):
         super().__init__()
-        self.flag = False
         self.function = function
-        self.point = Point(float_variables=np.ndarray(shape=(self.number_of_float_variables), dtype=np.double))
-        self.index = -1
+        self.isFirstFloatVariable = True
+        self.isFirstDiscreteVariable = True
+        self.isInit = True
 
-    def suggest_float(self, name : str, dawn : float, up : float):
-        if self.point.float_variables.size == 0:
+    def suggest_float(self, name : object, dawn : float, up : float):
+        if self.isInit == True:
             self.dimension += 1
             self.number_of_float_variables += 1
 
-            if (self.flag == False):
+            if (self.isFirstFloatVariable == True):
                 self.number_of_objectives = 1
-                self.float_variable_names = np.ndarray(shape=(self.number_of_float_variables), dtype=str)
+                self.float_variable_names = np.ndarray(shape=(self.number_of_float_variables), dtype=object)
                 self.lower_bound_of_float_variables = np.ndarray(shape=(self.number_of_float_variables), dtype=np.double)
                 self.upper_bound_of_float_variables = np.ndarray(shape=(self.number_of_float_variables), dtype=np.double)
-                self.flag = True
+                self.isFirstFloatVariable = False
 
-            else : 
+            else:
                 self.float_variable_names = np.resize(self.float_variable_names, (self.number_of_float_variables))
                 self.lower_bound_of_float_variables = np.resize(self.lower_bound_of_float_variables, (self.number_of_float_variables))
                 self.upper_bound_of_float_variables = np.resize(self.upper_bound_of_float_variables, (self.number_of_float_variables))
 
             self.float_variable_names[self.number_of_float_variables - 1] = name
-            self.lower_bound_of_float_variables[self.number_of_float_variables - 1] = dawn
+            self.lower_bound_of_float_variables[self.number_of_float_variables - 1] = dawn  
             self.upper_bound_of_float_variables[self.number_of_float_variables - 1] = up
-            return 1
+            return dawn
 
         else:
-            self.index += 1
-            return self.point.float_variables[self.index % self.number_of_float_variables]
+            index = np.where(self.float_variable_names == name)
+            return self.point.float_variables[index[0][0]]
+        
+    def suggest_int(self, name : object, value : object):
+        if self.isInit == True:
+            if (self.isFirstDiscreteVariable == True):
+                self.dimension += 1
+                self.number_of_discrete_variables += 1
+                self.number_of_objectives = 1
+
+                self.discrete_variable_names = np.ndarray(shape=(1), dtype=object)
+                self.discrete_variable_values = np.ndarray(shape=(1, 1), dtype=object)
+
+                self.discrete_variable_names[self.number_of_discrete_variables - 1] = name
+                self.discrete_variable_values[self.number_of_discrete_variables - 1][0] = value
+
+                self.isFirstDiscreteVariable = False
+
+            else:
+                same_name = np.where(self.discrete_variable_names == name)
+                if np.size(same_name) == 0:
+                    self.dimension += 1
+                    self.number_of_discrete_variables += 1
+
+                    rows, cols = self.discrete_variable_values.shape
+                    temp = np.zeros((rows + 1, cols), dtype=np.int32)
+                    temp[:rows, :cols] = self.discrete_variable_values
+                    self.discrete_variable_values = temp
+
+                    self.discrete_variable_names = np.resize(self.discrete_variable_names, (self.number_of_discrete_variables))
+
+                    self.discrete_variable_names[self.number_of_discrete_variables - 1] = name
+                    self.discrete_variable_values[self.number_of_discrete_variables - 1][0] = value
+                    
+                else:
+                    i_index = np.where(self.discrete_variable_names == name)[0][0]
+                    if type(self.discrete_variable_values[i_index][len(self.discrete_variable_values[i_index]) - 1]) == np.int32:
+                        self.discrete_variable_values[i_index][len(self.discrete_variable_values[0]) - 1] = value
+                            
+                    else:
+                        rows, cols = self.discrete_variable_values.shape
+                        temp = np.zeros((rows, cols + 1), dtype=np.int32)
+                        temp[:rows, :cols] = self.discrete_variable_values
+                        self.discrete_variable_values = temp
+
+                        self.discrete_variable_values[i_index][len(self.discrete_variable_values[0]) - 1] = value
+            
+            return value
+
+        else:
+            index = np.where(self.discrete_variable_names == name)[0][0]
+            return int(self.point.discrete_variables[index])
         
 
     def calculate(self, point: Point, function_value: FunctionValue) -> FunctionValue:
         self.point = point
+        self.isInit = False
         function_value.value = self.function(self)
         return function_value
