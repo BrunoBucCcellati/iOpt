@@ -36,6 +36,7 @@ from problems.stronginc5 import Stronginc5
 from problems.xsquared import XSquared
 from problems.test import test
 from iOpt.solver import Solver
+from iOpt.optimizer import optimizer
 from iOpt.solver_parametrs import SolverParameters
 from iOpt.output_system.listeners.static_painters import StaticPainterListener
 from iOpt.output_system.listeners.static_painters import StaticPainterNDListener
@@ -110,6 +111,7 @@ __all__ = [
     "XGB_3D",
     "StaticDashboard",
     "Solver",
+    "optimizer",
     "SolverParameters",
     "StaticPainterListener",
     "StaticPainterNDListener",
