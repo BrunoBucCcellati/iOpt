@@ -82,7 +82,7 @@ class test(Problem):
                         temp[:rows, :cols] = self.discrete_variable_values
                         self.discrete_variable_values = temp
 
-                        self.discrete_variable_values[i_index][len(self.discrete_variable_values[0]) - 1] = value
+                        self.discrete_variable_values[index][len(self.discrete_variable_values[0]) - 1] = value
             
             return value
 
