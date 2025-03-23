@@ -72,9 +72,9 @@ class test(Problem):
                     self.discrete_variable_values[self.number_of_discrete_variables - 1][0] = value
                     
                 else:
-                    index = np.where(self.discrete_variable_names == name)[0][0]
-                    if type(self.discrete_variable_values[index][len(self.discrete_variable_values[index]) - 1]) == np.int32:
-                        self.discrete_variable_values[index][len(self.discrete_variable_values[0]) - 1] = value
+                    i_index = np.where(self.discrete_variable_names == name)[0][0]
+                    if type(self.discrete_variable_values[i_index][len(self.discrete_variable_values[i_index]) - 1]) == np.int32:
+                        self.discrete_variable_values[i_index][len(self.discrete_variable_values[0]) - 1] = value
                             
                     else:
                         rows, cols = self.discrete_variable_values.shape
@@ -82,7 +82,7 @@ class test(Problem):
                         temp[:rows, :cols] = self.discrete_variable_values
                         self.discrete_variable_values = temp
 
-                        self.discrete_variable_values[index][len(self.discrete_variable_values[0]) - 1] = value
+                        self.discrete_variable_values[i_index][len(self.discrete_variable_values[0]) - 1] = value
             
             return value
 
