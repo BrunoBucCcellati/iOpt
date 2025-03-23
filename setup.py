@@ -27,7 +27,7 @@ setup(
    author_email='',
    long_description=read_me_description,
    long_description_content_type="text/markdown",
-   url="https://github.com/BrunoBucCcellati/iOpt/tree/interface",
+   url="https://github.com/BrunoBucCcellati/iOpt@interface",
    python_requires='>=3.9',
    packages=find_packages(exclude=["*test*", "examples", "benchmarks"]),
    install_requires=_get_requirements('requirements.txt'),
