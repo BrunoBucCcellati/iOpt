@@ -11,7 +11,7 @@ from problems.grishagin import Grishagin
 from problems.grishagin_mco import Grishagin_mco
 from problems.hill import Hill
 from problems.mco_test1 import mco_test1
-from problems.mco_test1_1 import mco_test1_1
+from problems.mco_test1_1 import mco_test1
 from problems.mco_test3 import mco_test3
 from problems.mco_test5 import mco_test5
 from problems.mco_test6 import mco_test6
