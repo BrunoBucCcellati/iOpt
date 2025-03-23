@@ -36,7 +36,7 @@ from problems.stronginc5 import Stronginc5
 from problems.xsquared import XSquared
 from problems.test import test
 from iOpt.solver import Solver
-from iOpt.optimizer import optimizer
+from iOpt.study import Study, create_study
 from iOpt.solver_parametrs import SolverParameters
 from iOpt.output_system.listeners.static_painters import StaticPainterListener
 from iOpt.output_system.listeners.static_painters import StaticPainterNDListener
@@ -46,7 +46,7 @@ from iOpt.output_system.listeners.animate_painters import AnimatePainterNDListen
 from iOpt.output_system.listeners.console_outputers import ConsoleOutputListener
 from examples.Genetic_algorithm.TSP._1D.Problems import ga_tsp_vary_mutation
 from examples.Genetic_algorithm.TSP._2D.Problems import ga_tsp_2d
-from examples.Machine_learning.NeuralNetwork.Segmentation.Problem.Cardio2D import Cardio2D
+# from examples.Machine_learning.NeuralNetwork.Segmentation.Problem import Cardio2D
 from examples.Machine_learning.SVC._1D.Problems import SVC_Fixed_Kernel
 from examples.Machine_learning.SVC._1D.Problems import SVC_Fixed_Regularization
 from examples.Machine_learning.SVC._2D.Problems import SVC_2d
@@ -56,7 +56,7 @@ from examples.Machine_learning.SVC._2D.Problems.mco_breast_cancer import mco_bre
 from examples.Machine_learning.SVC._3D.Problem import SVC_3D
 from examples.Machine_learning.XGBoostRegression._2D.Problems.XGBR_2D_Gasturbine import XGBR_2d_Gasturbine
 from examples.Machine_learning.XGBoostRegression._3D.Problems import XGB_3D
-from iOpt.dashboard.static_dashboard import StaticDashboard
+# from dashboard.static_dashboard import StaticDashboard
 
 
 __all__ = [
@@ -99,7 +99,7 @@ __all__ = [
     "test",
     "ga_tsp_vary_mutation",
     "ga_tsp_2d",
-    "Cardio2D",
+    # "Cardio2D",
     "SVC_Fixed_Kernel",
     "SVC_Fixed_Regularization",
     "SVC_2d",
@@ -109,9 +109,11 @@ __all__ = [
     "SVC_3D",
     "XGBR_2d_Gasturbine",
     "XGB_3D",
-    "StaticDashboard",
+    # "StaticDashboard",
     "Solver",
-    "optimizer",
+    "Study",
+    "create_study",
+    "Point",
     "SolverParameters",
     "StaticPainterListener",
     "StaticPainterNDListener",
