@@ -107,8 +107,24 @@ class Study:
 
         cfol = ConsoleOutputListener(console_mode, iters)
         self.solver.add_listener(cfol)
+        self.solution = self.solver.solve()
         
-        return self.solver.solve()
+        return self.solution
+    
+    """
+    Return params or value of the best trial.
+    """
+    def best_params(self):
+        list_best_params = []
+        for i in range(len(self.solution.best_trials)):
+            list_best_params.append(self.solution.best_trials[i].point.float_variables)
+        return list_best_params[0]
+
+    def best_value(self):
+        list_best_value = []
+        for i in range(len(self.solution.best_trials)):
+            list_best_value.append(self.solution.best_trials[i].function_values[0].value)
+        return list_best_value[0]
 
 
 """
