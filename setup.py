@@ -20,14 +20,14 @@ def _get_requirements(req_name: str):
     return requirements
 
 setup(
-   name='iOpt_experemental',
+   name='iOpt',
    version='0.4.0',
    description='Framework for automatically tuning hyperparameter values for mathematical models, AI and ML.',
    author='UNN Team',
    author_email='',
    long_description=read_me_description,
    long_description_content_type="text/markdown",
-   url="https://github.com/BrunoBucCcellati/iOpt",
+   url="https://github.com/aimclub/iOpt",
    python_requires='>=3.9',
    packages=find_packages(exclude=["*test*", "examples", "benchmarks"]),
    install_requires=_get_requirements('requirements.txt'),
