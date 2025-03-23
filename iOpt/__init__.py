@@ -44,18 +44,18 @@ from iOpt.output_system.listeners.static_painters import StaticDiscreteListener
 from iOpt.output_system.listeners.animate_painters import AnimatePainterListener
 from iOpt.output_system.listeners.animate_painters import AnimatePainterNDListener
 from iOpt.output_system.listeners.console_outputers import ConsoleOutputListener
-from examples.Genetic_algorithm.TSP._1D.Problems import ga_tsp_vary_mutation
-from examples.Genetic_algorithm.TSP._2D.Problems import ga_tsp_2d
-# from examples.Machine_learning.NeuralNetwork.Segmentation.Problem import Cardio2D
-from examples.Machine_learning.SVC._1D.Problems import SVC_Fixed_Kernel
-from examples.Machine_learning.SVC._1D.Problems import SVC_Fixed_Regularization
-from examples.Machine_learning.SVC._2D.Problems import SVC_2d
-from examples.Machine_learning.SVC._2D.Problems import MCO_SVC_2D_Transformators_State
-from examples.Machine_learning.SVC._2D.Problems import SVC_2D_Float_Discrete
+from examples.Genetic_algorithm.TSP._1D.Problems.ga_tsp_vary_mutation import GA_TSP_Vary_Mutation
+from examples.Genetic_algorithm.TSP._2D.Problems.ga_tsp_2d import GA_TSP_2D
+# from examples.Machine_learning.NeuralNetwork.Segmentation.Problem.Cardio2D import Cardio2D
+from examples.Machine_learning.SVC._1D.Problems.SVC_Fixed_Kernel import SVC_Fixed_Kernel
+from examples.Machine_learning.SVC._1D.Problems.SVC_Fixed_Regularization import SVC_Fixed_Regularization
+from examples.Machine_learning.SVC._2D.Problems.SVC_2d import SVC_2D
+from examples.Machine_learning.SVC._2D.Problems.MCO_SVC_2D_Transformators_State import MCO_SVC_2D_Transformators_State
+from examples.Machine_learning.SVC._2D.Problems.SVC_2D_Float_Discrete import SVC_2D_Float_Discrete
 from examples.Machine_learning.SVC._2D.Problems.mco_breast_cancer import mco_breast_cancer
-from examples.Machine_learning.SVC._3D.Problem import SVC_3D
+from examples.Machine_learning.SVC._3D.Problem.SVC_3D import SVC_3D
 from examples.Machine_learning.XGBoostRegression._2D.Problems.XGBR_2D_Gasturbine import XGBR_2d_Gasturbine
-from examples.Machine_learning.XGBoostRegression._3D.Problems import XGB_3D
+from examples.Machine_learning.XGBoostRegression._3D.Problems.XGB_3D import XGB_3D
 # from dashboard.static_dashboard import StaticDashboard
 
 
@@ -97,12 +97,12 @@ __all__ = [
     "Stronginc5",
     "XSquared",
     "test",
-    "ga_tsp_vary_mutation",
-    "ga_tsp_2d",
+    "GA_TSP_Vary_Mutation",
+    "GA_TSP_2D",
     # "Cardio2D",
     "SVC_Fixed_Kernel",
     "SVC_Fixed_Regularization",
-    "SVC_2d",
+    "SVC_2D",
     "MCO_SVC_2D_Transformators_State",
     "SVC_2D_Float_Discrete",
     "mco_breast_cancer",
