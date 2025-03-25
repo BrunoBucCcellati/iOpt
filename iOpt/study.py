@@ -1,4 +1,4 @@
-from problems.test import test
+from problems.trial import trial
 from iOpt.solver import Solver
 from iOpt.problem import Problem
 from iOpt.solver_parametrs import SolverParameters
@@ -53,7 +53,7 @@ class Study:
         if type(objective) == Problem:
             self.problem == objective
         else:
-            self.problem = test(objective)
+            self.problem = trial(objective)
             objective(self.problem)
 
         self.solver = Solver(self.problem, solver_parameters)
@@ -114,17 +114,19 @@ class Study:
     """
     Return params or value of the best trial.
     """
-    def best_params(self):
-        list_best_params = []
-        for i in range(len(self.solution.best_trials)):
-            list_best_params.append(self.solution.best_trials[i].point.float_variables)
-        return list_best_params[0]
+    def best_float_params(self):
+        list_best_params = [trial.point.float_variables for trial in self.solution.best_trials]
+        return list_best_params
+    
+    def best_discrete_params(self):
+        if self.problem.number_of_discrete_variables == 0:
+            raise Exception("The problem does not depend on discrete parameters")
+        list_discrete_params = [trial.point.discrete_variables for trial in self.solution.best_trials]
+        return list_discrete_params
 
-    def best_value(self):
-        list_best_value = []
-        for i in range(len(self.solution.best_trials)):
-            list_best_value.append(self.solution.best_trials[i].function_values[0].value)
-        return list_best_value[0]
+    def best_values(self):
+        list_best_values = [[trial.function_values[i].value for i in range (len(trial.function_values))] for trial in self.solution.best_trials]
+        return list_best_values
 
 
 """
