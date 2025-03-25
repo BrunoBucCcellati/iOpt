@@ -34,7 +34,7 @@ from problems.stronginc2 import Stronginc2
 from problems.stronginc3 import Stronginc3
 from problems.stronginc5 import Stronginc5
 from problems.xsquared import XSquared
-from problems.test import test
+from problems.trial import trial
 from iOpt.solver import Solver
 from iOpt.study import Study, create_study
 from iOpt.solver_parametrs import SolverParameters
@@ -96,7 +96,7 @@ __all__ = [
     "Stronginc3",
     "Stronginc5",
     "XSquared",
-    "test",
+    "trial",
     "GA_TSP_Vary_Mutation",
     "GA_TSP_2D",
     # "Cardio2D",
