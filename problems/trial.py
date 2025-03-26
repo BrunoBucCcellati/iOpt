@@ -12,7 +12,6 @@ class trial(Problem):
         self.isFirstFloatVariable = True
         self.isFirstDiscreteVariable = True
         self.isInit = True
-        self.x, self.y = load_breast_cancer_data()
 
     def suggest_float(self, name : object, dawn : float, up : float):
 
