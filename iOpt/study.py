@@ -55,6 +55,10 @@ class Study:
         else:
             self.problem = trial(objective)
             objective(self.problem)
+            self.problem.isInit = False
+            while self.problem.num_of_objective_launches != 0:
+                objective(self.problem)
+                self.problem.num_of_objective_launches -= 1
 
         self.solver = Solver(self.problem, solver_parameters)
         
@@ -115,23 +119,22 @@ class Study:
     Return params or value of the best trial.
     """
     def best_float_params(self):
-        list_best_params = [trial.point.float_variables for trial in self.solution.best_trials]
-        return list_best_params
+        for i in range(len(self.solution.best_trials[0].point.float_variables)):
+            print("{}: {}".format(self.problem.float_variable_names[i], self.solution.best_trials[0].point.float_variables[i]))
     
     def best_discrete_params(self):
         if self.problem.number_of_discrete_variables == 0:
             raise Exception("The problem does not depend on discrete parameters")
-        list_discrete_params = [trial.point.discrete_variables for trial in self.solution.best_trials]
-        return list_discrete_params
+        for i in range(len(self.solution.best_trials[0].point.discrete_variables)):
+            print("{}: {}".format(self.problem.discrete_variable_names[i], self.solution.best_trials[0].point.discrete_variables[i]))
 
     def best_values(self):
         list_best_values = [[trial.function_values[i].value for i in range (len(trial.function_values))] for trial in self.solution.best_trials]
-        return list_best_values
+        print("Best values: {}".format(list_best_values))
 
 
 """
 Create Study object.
 """
 def create_study(study_name: object = ""):
-    study = Study(study_name)
-    return study
+    return Study(study_name)
