@@ -162,7 +162,7 @@ class OutputFunctions:
         print("|{:>29} {:<{width}}|".format("solving time: ", solving_time, width=size_max_one_output * dim))
         print("|{:>29} {:<{width}}|".format("solution point: ", str(best_trial_point), width=size_max_one_output * dim))
         if ndv > 0:
-            print("|{:>29} {:<{width}}|".format("best disrete combination: ", str(best_trial_d_point),
+            print("|{:>29} {:<{width}}|".format("best discrete combination: ", str(best_trial_d_point),
                                                 width=size_max_one_output * dim))
         print("|{:>29} {:<{width}.8f}|".format("solution value: ", best_trial_value, width=size_max_one_output * dim))
         print("|{:>29} {:<{width}.8f}|".format("accuracy: ", solution_accuracy, width=size_max_one_output * dim))
