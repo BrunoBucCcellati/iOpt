@@ -50,15 +50,15 @@ class Study:
                  # for AnimatePainterND
                  animate_vars_indxs=[0, 1]):
         
-        if type(objective) == Problem:
-            self.problem == objective
-        else:
+        if callable(objective):
             self.problem = trial(objective)
             objective(self.problem)
             self.problem.isInit = False
             while self.problem.num_of_objective_launches != 0:
                 objective(self.problem)
                 self.problem.num_of_objective_launches -= 1
+        else:
+            self.problem = objective
 
         self.solver = Solver(self.problem, solver_parameters)
         
@@ -131,7 +131,24 @@ class Study:
     def best_values(self):
         list_best_values = [[trial.function_values[i].value for i in range (len(trial.function_values))] for trial in self.solution.best_trials]
         print("Best values: {}".format(list_best_values))
-
+    
+    def best_float_params_(self):
+        temp_list = []
+        for i in range(len(self.solution.best_trials[0].point.float_variables)):
+            temp_list.append(self.solution.best_trials[0].point.float_variables[i])
+        return temp_list
+    
+    def best_discrete_params_(self):
+        temp_list = []
+        if self.problem.number_of_discrete_variables == 0:
+            raise Exception("The problem does not depend on discrete parameters")
+        for i in range(len(self.solution.best_trials[0].point.discrete_variables)):
+            temp_list.append(self.solution.best_trials[0].point.discrete_variables[i])
+        return temp_list
+    
+    def best_values_(self):
+        list_best_values = [[trial.function_values[i].value for i in range (len(trial.function_values))] for trial in self.solution.best_trials]
+        return list_best_values[0][0]
 
 """
 Create Study object.
