@@ -1,3 +1,10 @@
+"""
+Упрощённый интерфейс iOpt
+Доступ к всем компонентам через единый импорт:
+>>> import iOpt
+>>> solver = iOpt.Solver(...)
+>>> params = iOpt.SolverParameters(...)
+"""
 from problems.Floudas import Floudas
 from problems.GKLS import GKLS
 from problems.Pern import Pern
@@ -46,7 +53,6 @@ from iOpt.output_system.listeners.animate_painters import AnimatePainterNDListen
 from iOpt.output_system.listeners.console_outputers import ConsoleOutputListener
 from examples.Genetic_algorithm.TSP._1D.Problems.ga_tsp_vary_mutation import GA_TSP_Vary_Mutation
 from examples.Genetic_algorithm.TSP._2D.Problems.ga_tsp_2d import GA_TSP_2D
-# from examples.Machine_learning.NeuralNetwork.Segmentation.Problem.Cardio2D import Cardio2D
 from examples.Machine_learning.SVC._1D.Problems.SVC_Fixed_Kernel import SVC_Fixed_Kernel
 from examples.Machine_learning.SVC._1D.Problems.SVC_Fixed_Regularization import SVC_Fixed_Regularization
 from examples.Machine_learning.SVC._2D.Problems.SVC_2d import SVC_2D
@@ -56,7 +62,6 @@ from examples.Machine_learning.SVC._2D.Problems.mco_breast_cancer import mco_bre
 from examples.Machine_learning.SVC._3D.Problem.SVC_3D import SVC_3D
 from examples.Machine_learning.XGBoostRegression._2D.Problems.XGBR_2D_Gasturbine import XGBR_2d_Gasturbine
 from examples.Machine_learning.XGBoostRegression._3D.Problems.XGB_3D import XGB_3D
-# from dashboard.static_dashboard import StaticDashboard
 
 
 __all__ = [
@@ -99,7 +104,6 @@ __all__ = [
     "trial",
     "GA_TSP_Vary_Mutation",
     "GA_TSP_2D",
-    # "Cardio2D",
     "SVC_Fixed_Kernel",
     "SVC_Fixed_Regularization",
     "SVC_2D",
@@ -109,7 +113,6 @@ __all__ = [
     "SVC_3D",
     "XGBR_2d_Gasturbine",
     "XGB_3D",
-    # "StaticDashboard",
     "Solver",
     "Study",
     "create_study",
